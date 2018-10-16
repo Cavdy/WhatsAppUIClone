@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/call_screen.dart';
+import 'package:whatsapp_clone/screens/camera_screen.dart';
+import 'package:whatsapp_clone/screens/chat_screen.dart';
+import 'package:whatsapp_clone/screens/status_screen.dart';
 
 class WhatsAppHome extends StatefulWidget {
   @override
@@ -28,6 +32,7 @@ class _WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSt
           new Tab(text: "STATUS",),
           new Tab(text: "CALLS",)
         ],),
+        actions: <Widget>[new Icon(Icons.search), new Padding(padding: const EdgeInsets.symmetric(horizontal: 5.0)), new Icon(Icons.more_vert)],
       ),
       body: new TabBarView(
         controller: _tabController,
@@ -38,7 +43,7 @@ class _WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSt
           new CallScreen(),
         ],
       ),
-      floatingActionButton: new FloatingActionButton(onPressed: (){print("Open Chats");}, backgroundColor: Theme.of(context).accentColor, child: new Icon(Icons.message),),
+      floatingActionButton: new FloatingActionButton(onPressed: (){print("Open Chats");}, backgroundColor: Theme.of(context).primaryColor, child: new Icon(Icons.message, color: Colors.white,),),
     );
   }
 }

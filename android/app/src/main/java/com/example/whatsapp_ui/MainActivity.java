@@ -1,4 +1,4 @@
-package com.example.whatsappclone;
+package com.example.whatsapp_ui;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/screens/call_screen.dart';
-import 'package:whatsapp_clone/screens/camera_screen.dart';
-import 'package:whatsapp_clone/screens/chat_screen.dart';
-import 'package:whatsapp_clone/screens/status_screen.dart';
+
+import 'pages/calls_screen.dart';
+import 'pages/camera_screen.dart';
+import 'pages/chat_screen.dart';
+import 'pages/status_screen.dart';
 
 class WhatsAppHome extends StatefulWidget {
   @override
@@ -10,40 +11,56 @@ class WhatsAppHome extends StatefulWidget {
 }
 
 class _WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderStateMixin {
-
   TabController _tabController;
+  bool showFab = true;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: 1 );
+    _tabController = TabController(vsync: this, initialIndex: 1, length: 4);
+    _tabController.addListener(() {
+      if (_tabController.index == 1) showFab = true;
+      else showFab = false;
+      setState(() {});
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("WhatsApp"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("WhatsApp"),
         elevation: 0.7,
-        bottom: new TabBar(controller: _tabController, indicatorColor: Colors.white, tabs: <Widget>[
-          new Tab(icon: new Icon(Icons.camera_alt),),
-          new Tab(text: "CHATS",),
-          new Tab(text: "STATUS",),
-          new Tab(text: "CALLS",)
-        ],),
-        actions: <Widget>[new Icon(Icons.search), new Padding(padding: const EdgeInsets.symmetric(horizontal: 5.0)), new Icon(Icons.more_vert)],
-      ),
-      body: new TabBarView(
-        controller: _tabController,
-        children: <Widget>[
-          new CameraScreen(),
-          new ChatScreen(),
-          new StatusScreen(),
-          new CallScreen(),
+        bottom: TabBar(
+          tabs: <Widget>[
+            Tab(icon: Icon(Icons.camera_alt),),
+            Tab(text: "CHATS",),
+            Tab(text: "STATUS",),
+            Tab(text: "CALLS",)
+          ],
+          controller: _tabController,
+          indicatorColor: Colors.white,
+        ),
+        actions: <Widget>[
+          Icon(Icons.search),
+          Padding(padding: const EdgeInsets.symmetric(horizontal: 5.0),),
+          Icon(Icons.more_vert)
         ],
       ),
-      floatingActionButton: new FloatingActionButton(onPressed: (){print("Open Chats");}, backgroundColor: Theme.of(context).primaryColor, child: new Icon(Icons.message, color: Colors.white,),),
+      body: TabBarView(
+          controller: _tabController,
+          children: <Widget>[
+            CameraScreen(),
+            ChatScreen(),
+            StatusScreen(),
+            CallsScreen(),
+          ]
+      ),
+      floatingActionButton: showFab ? FloatingActionButton(
+        backgroundColor: Theme.of(context).accentColor,
+        child: Icon(Icons.message, color: Colors.white,),
+        onPressed: () => print('Open Chats'),
+      ) : null,
     );
   }
 }

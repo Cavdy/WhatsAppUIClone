@@ -8,28 +8,16 @@ class ChatModel {
 }
 
 List<ChatModel> dummyData = [
-  new ChatModel(
-    name: "Sarah Jane",
-    message: "Hi, Cavdy",
-    time: "12:07",
-    avatarUrl: "http://www.kenya.crazymedias.com/wp-content/uploads/2017/01/img_586b7f22bd8a7.png"
+  ChatModel(
+      name: 'Cavdy',
+      message: 'Hey man!!!',
+      time: "18:20",
+      avatarUrl: "https://miro.medium.com/max/1000/1*ilC2Aqp5sZd1wi0CopD1Hw.png"
   ),
-  new ChatModel(
-      name: "Jessica Love",
-      message: "Awww I love you",
-      time: "09:16",
-      avatarUrl: "http://www.kenya.crazymedias.com/wp-content/uploads/2017/01/img_586b7f22bd8a7.png"
-  ),
-  new ChatModel(
-      name: "Ify Huddah",
-      message: "You are my heart",
-      time: "01:48",
-      avatarUrl: "http://www.kenya.crazymedias.com/wp-content/uploads/2017/01/img_586b7f22bd8a7.png"
-  ),
-  new ChatModel(
-      name: "Mhz Posh",
-      message: "boo boo cavdy",
-      time: "08:30",
-      avatarUrl: "http://www.kenya.crazymedias.com/wp-content/uploads/2017/01/img_586b7f22bd8a7.png"
+  ChatModel(
+      name: 'DarkLord',
+      message: 'Hey man!!!',
+      time: "22:35",
+      avatarUrl: "https://miro.medium.com/max/1000/1*ilC2Aqp5sZd1wi0CopD1Hw.png"
   )
 ];
